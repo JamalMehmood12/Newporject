@@ -49,8 +49,9 @@ class AdminController extends Controller
 
     public function foodmenushow()
     {
-        $data = food::all();
-        return view("admin.foodmenushow", compact("data"));
+        $data1 = food::paginate(2);
+        $data = food::paginate(2);
+        return view("admin.foodmenushow", compact("data","data1"));
     }
     public function deletemenu($id)
     {
@@ -128,5 +129,5 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
     }
-    
+
 }

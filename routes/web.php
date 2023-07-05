@@ -16,27 +16,31 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('/home');
-});
-Route::get('/',[HomeController::class,'index']);
-Route::get('/users',[AdminController::class,'user']);
-Route::get('/foodmenu',[AdminController::class,'foodmenu']);
-Route::post('/uploadfood',[AdminController::class,'uploadfood']);
-Route::get('/foodmenushow',[AdminController::class,'foodmenushow']);
-Route::get('/deletemenu/{id}',[AdminController::class,'deletemenu']);
-
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('', function () {
+//     return view('/');
+// });
+Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/users', [AdminController::class, 'user']);
+    Route::get('/foodmenu', [AdminController::class, 'foodmenu']);
+    Route::post('/uploadfood', [AdminController::class, 'uploadfood']);
+    Route::get('/foodmenushow', [AdminController::class, 'foodmenushow']);
+    Route::get('/deletemenu/{id}', [AdminController::class, 'deletemenu']);
+    Route::get('/updatemenu/{id}', [AdminController::class, 'updatemenu']);
+    Route::post('/update/{id}', [AdminController::class, 'update']);
+    Route::post('/reservation', [AdminController::class, 'reservation']);
+    Route::get('viewreservation', [AdminController::class, 'viewreservation']);
+    Route::get('viewchefs', [AdminController::class, 'viewchefs']);
+    Route::get('/deletechef/{id}', [AdminController::class, 'deletechef']);
+
 });
-
-
-
+Route::get('/dashboard', function () {
+    return view('admin/dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 // Route::get("/users",)
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

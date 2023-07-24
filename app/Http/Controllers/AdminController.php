@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Food;
 use App\Models\Reservation;
 use App\Models\Foodchef;
+use App\Models\Aboutfood;
 
 class AdminController extends Controller
 {
@@ -141,8 +142,21 @@ class AdminController extends Controller
     }
     public function aboutfood()
     {
-        $data = food::all();
-        return view("admin.adminfood", compact("data"));
+       
+        return view("admin.adminabout");
+    }
+    public function uploadaboutfood(Request $request)
+    {
+        $data = new aboutfood;
+        $image = $request->image;
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move('aboutfoodimg', $imagename);
+        $data->image = $imagename;
+        $data->title = $request->title;
+        $data->name = $request->name;
+        $data->description = $request->description;
+        $data->save();
+        return redirect()->back();;
     }
     
 }

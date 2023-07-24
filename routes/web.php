@@ -37,7 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::get('viewchefs', [AdminController::class, 'viewchefs']);
     Route::get('/deletechef/{id}', [AdminController::class, 'deletechef']);
     Route::get('/search', [AdminController::class, 'searchfood']);
-    // Route::post('/aboutfood', [AdminController::class, 'aboutfood']);
+    Route::get('/aboutfood', [AdminController::class, 'aboutfood']);
+    Route::post('/uploadaboutfood', [AdminController::class, 'uploadaboutfood']);
 
 });
 Route::get('/dashboard', function () {

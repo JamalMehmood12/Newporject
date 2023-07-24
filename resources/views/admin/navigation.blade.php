@@ -25,7 +25,7 @@
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item menu-items"><a class="nav-link" href="{{url('/foodmenu')}}"><span class="menu-title">FoodMenu</span></a></li>
                         <li class="nav-item menu-items"><a class="nav-link" href="{{url('/foodmenushow')}}"><span class="menu-title">FoodMenu List</span></a></li>
-                        <li class="nav-item menu-items"><a class="nav-link" href="{{url('/adminabout')}}"><span class="menu-title">About Food</span></a></li>
+                        <li class="nav-item menu-items"><a class="nav-link" href="{{url('/aboutfood')}}"><span class="menu-title">About Food</span></a></li>
                     </ul>
                 </div>
             </li>

@@ -4,7 +4,16 @@
   <div class="row">
     <div class="col-lg-12">
       <h2 class="text-dark p-3">Show Menu List</h2>
-      <table class="table">
+      <div class="input-group">
+        <a href="{{url('/foodmenu')}}"><i class="fa-solid fa-circle-plus"></i>Add FoodMenu</a>
+        <form action="{{url('/search')}}" method="get" class="ms-auto">
+          @csrf
+          <input type="text" name="search" />
+          <input type="submit" value="search" class="btn btn-primary" />
+        </form>
+
+      </div>
+      <table class="table" id="myTable" data-toggle="table" data-search="true" data-filter-control="true" data-show-export="true" data-click-to-select="true">
         <thead>
           <tr>
             <th scope="col">ID</th>
@@ -29,9 +38,10 @@
           <!-- <th scope="col">Handle</th> -->
         </tr>
         @endforeach
-        </thead> 
+        </thead>
       </table>
-      {{$data1->links()}}
+      {{$data2->links()}}
+     
     </div>
   </div>
 </div>

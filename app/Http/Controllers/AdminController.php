@@ -49,9 +49,10 @@ class AdminController extends Controller
 
     public function foodmenushow()
     {
-        $data1 = food::paginate(2);
+        
         $data = food::paginate(2);
-        return view("admin.foodmenushow", compact("data","data1"));
+        $data2 = food::paginate(2);
+        return view("admin.foodmenushow", compact("data","data2"));
     }
     public function deletemenu($id)
     {
@@ -129,5 +130,19 @@ class AdminController extends Controller
         $data->delete();
         return redirect()->back();
     }
-
+    public function searchfood(Request $request)
+    {
+        $search = $request->search;
+        $data = food::where('title', 'LIKE', '%' . $search . '%')
+            ->orWhere('price', 'LIKE', '%' . $search . '%')
+            ->get();
+    
+        return view('admin.foodmenushow', compact('data'));
+    }
+    public function aboutfood()
+    {
+        $data = food::all();
+        return view("admin.adminfood", compact("data"));
+    }
+    
 }

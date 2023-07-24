@@ -1,0 +1,36 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   app/Http/Controllers/AdminController.php
+#	modified:   app/Http/Controllers/ProfileController.php
+#	modified:   app/Models/Food.php
+#	modified:   app/Providers/AppServiceProvider.php
+#	new file:   public/foodimage/1689576797.png
+#	new file:   resources/views/admin/adminabout.blade.php
+#	modified:   resources/views/admin/admincss.blade.php
+#	modified:   resources/views/admin/adminscript.blade.php
+#	modified:   resources/views/admin/foodmenushow.blade.php
+#	modified:   resources/views/admin/navigation.blade.php
+#	new file:   resources/views/layouts/about.blade.php
+#	modified:   resources/views/layouts/home.blade.php
+#	deleted:    resources/views/layouts/welcome.blade.php
+#	modified:   routes/web.php
+#
+# Changes not staged for commit:
+#	modified:   app/Http/Controllers/AdminController.php
+#	modified:   app/Http/Controllers/HomeController.php
+#	modified:   resources/views/admin/adminabout.blade.php
+#	modified:   resources/views/admin/navigation.blade.php
+#	modified:   resources/views/layouts/about.blade.php
+#	modified:   routes/web.php
+#
+# Untracked files:
+#	app/Models/Aboutfood.php
+#	database/migrations/2023_07_24_063138_create_aboutfoods_table.php
+#	public/aboutfoodimg/
+#

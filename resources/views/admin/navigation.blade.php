@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid" id="header">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
             <!-- <a class="sidebar-brand brand-logo" href="/"><h2 class="text-light">Dashboard</h2></a> -->
@@ -10,7 +10,7 @@
                     <span class="menu-icon">
                         <i class="mdi mdi-speedometer"></i>
                     </span>
-                    <span class="menu-title">Users</span>
+                    <!-- <span class="menu-title">Users</span> -->
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -23,7 +23,7 @@
                 </a>
                 <div class="collapse" id="ui-basic">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item menu-items"><a class="nav-link" href="{{url('/foodmenu')}}"><span class="menu-title">FoodMenu</span></a></li>
+                        <li class="nav-item menu-items"><a class="nav-link" href="{{url('/foodmenu')}}"><span class="menu-title">FoodAdd</span></a></li>
                         <li class="nav-item menu-items"><a class="nav-link" href="{{url('/foodmenushow')}}"><span class="menu-title">FoodMenu List</span></a></li>
                         <li class="nav-item menu-items"><a class="nav-link" href="{{url('/aboutfood')}}"><span class="menu-title">About Food</span></a></li>
                     </ul>
@@ -34,7 +34,7 @@
                     <span class="menu-icon">
                         <i class="mdi mdi-chart-bar"></i>
                     </span>
-                    <span class="menu-title">Chiefs</span>
+                    <span class="menu-title">Chefs</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -66,3 +66,17 @@
         </ul>
     </nav>
 </div>
+
+<style>
+    #header {
+        background-color: #f5f5f5;
+    }
+
+    span.menu-title {
+        color: black;
+        font-weight: 600;
+        /* text-transform: uppercase; */
+        font-size: 14px;
+        /* line-height: 1.3rem; */
+    }
+</style>

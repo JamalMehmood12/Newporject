@@ -27,33 +27,39 @@ class AdminController extends Controller
             'title' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Validate image file
         ]);
 
-        $data = new food;
-        $imagename = '';
+        $existingFood = Food::where('title', $req->title)->first();
+
+        if ($existingFood) {
+            return redirect()->back()->with('error', 'Title already exists!');
+        }
+
+        $data = new Food;
+        $data->title = $req->title;
+        $data->price = $req->price;
+        $data->description = $req->description;
 
         if ($req->hasFile('image')) {
             $image = $req->file('image');
             $imagename = time() . '.' . $image->getClientOriginalExtension();
             $image->move('foodimage', $imagename);
             $data->image = $imagename;
-            // Rest of your code
         } else {
-            // Handle case when no file was uploaded
+            // If no file was uploaded, you can handle it here
         }
-        $data->title = $req->title;
-        $data->price = $req->price;
-        $data->description = $req->description;
+
         $data->save();
         return redirect('/foodmenushow');
     }
 
+
     public function foodmenushow()
     {
-        
-        $data = food::paginate(2);
-        $data2 = food::paginate(2);
-        return view("admin.foodmenushow", compact("data","data2"));
+
+        $data = food::all();
+        return view("admin.foodmenushow", compact("data"));
     }
     public function deletemenu($id)
     {
@@ -123,7 +129,6 @@ class AdminController extends Controller
         $data->name = $req->name;
         $data->speciality = $req->speciality;
         $data->save();
-        
     }
     public function deletechef($id)
     {
@@ -137,12 +142,18 @@ class AdminController extends Controller
         $data = food::where('title', 'LIKE', '%' . $search . '%')
             ->orWhere('price', 'LIKE', '%' . $search . '%')
             ->get();
-    
-        return view('admin.foodmenushow', compact('data'));
+
+        if ($data->isEmpty()) {
+            return view('admin.foodmenushow')->with('message', 'No results found.');
+        } else {
+
+            return view('admin.foodmenushow', compact('data'));
+        }
     }
+
     public function aboutfood()
     {
-       
+
         return view("admin.adminabout");
     }
     public function uploadaboutfood(Request $request)
@@ -158,5 +169,4 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back();;
     }
-    
 }

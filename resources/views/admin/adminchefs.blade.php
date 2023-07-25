@@ -28,7 +28,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h2 class="text-dark p-3">Show Menu List</h2>
+            <h2 class="text-dark p-3">Chefs List</h2>
             <table class="table">
                 <thead>
                     <table class="table">
@@ -49,8 +49,8 @@
                             <th scope="col">{{$data2->name}}</th>
                             <th scope="col">{{$data2->speciality}}</th>
                             <th scope="col"><img src="/chefimage/{{$data2->image}}"></th>
-                            <th scope="col"><a href="{{url('/updatechef',$data2->id)}}">edit</a></th>
-                            <th scope="col"><a href="{{url('/deletechef',$data2->id)}}">Delete</a></th>
+                            <th scope="col"><a href="{{url('/updatechef',$data2->id)}}"><i class="fa-sharp fa-regular fa-pen-to-square"></i></a></th>
+                            <th scope="col"><a href="{{url('/deletechef',$data2->id)}}"><i class="fa-solid fa-trash"></i></a></th>
                             <!-- <th scope="col">Handle</th> -->
                         </tr>
                         @endforeach
@@ -63,6 +63,6 @@
 
 <style>
     img {
-        width: 50%;
+        width: 10%;
     }
 </style>

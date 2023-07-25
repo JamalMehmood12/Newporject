@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h2 class="text-dark p-3">Show Menu List</h2>
+      <h2 class="text-dark p-3">Reservation</h2>
       <table class="table">
         <thead>
           <table class="table">

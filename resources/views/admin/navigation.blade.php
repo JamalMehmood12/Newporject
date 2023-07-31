@@ -69,7 +69,7 @@
 
 <style>
     #header {
-        background-color: #f5f5f5;
+        background-color: white;
     }
 
     span.menu-title {

@@ -13,9 +13,9 @@ class HomeController extends Controller
     //
     public function index()
     {
-        $data2=Foodchef::all();
-        $data=food::all();
-        $data3=Aboutfood::all();
-        return view('layouts/home',compact('data','data2','data3'));
+        $data2 = foodchef::all();
+        $data = food::all();
+        $data3 = Aboutfood::all();
+        return view('layouts/home', compact('data', 'data2', 'data3'));
     }
 }

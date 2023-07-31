@@ -13,31 +13,36 @@
         </form>
 
       </div>
+      <!-- ... Existing code ... -->
+
       <table class="table" id="myTable" data-toggle="table" data-search="true" data-filter-control="true" data-show-export="true" data-click-to-select="true">
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">No</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
             <th scope="col">Image</th>
             <th scope="col">Action</th>
-
-            <!-- <th scope="col">Handle</th> -->
           </tr>
         </thead>
         @if(!empty($data))
-        @foreach($data as $data)
+        @php
+        $count = 1;
+        @endphp
+        @foreach($data as $item)
         <tr>
-          <th scope="col">{{$data->id}}</th>
-          <th scope="col">{{$data->title}}</th>
-          <th scope="col">{{$data->description}}</th>
-          <th scope="col">${{$data->price}}</th>
-          <th scope="col"><img src="/foodimage/{{$data->image}}"></th>
-          <th scope="col"><a href="{{url('/updatemenu',$data->id)}}"><i class="fa-sharp fa-regular fa-pen-to-square"></i></a></th>
-          <th scope="col"><a href="{{url('/deletemenu',$data->id)}}"><i class="fa-solid fa-trash"></i></a></th>
-          <!-- <th scope="col">Handle</th> -->
+          <td>{{$count}}</td>
+          <td>{{$item->title}}</td>
+          <td>{{$item->description}}</td>
+          <td>${{$item->price}}</td>
+          <td><img src="/foodimage/{{$item->image}}"></td>
+          <td><a href="{{url('/updatemenu', $item->id)}}"><i class="fa-sharp fa-regular fa-pen-to-square"></i></a></td>
+          <td><a href="{{url('/deletemenu', $item->id)}}"><i class="fa-solid fa-trash"></i></a></td>
         </tr>
+        @php
+        $count++;
+        @endphp
         @endforeach
         @else
         <!-- Display the "No results found" message -->
@@ -45,6 +50,9 @@
         @endif
         </thead>
       </table>
+
+      <!-- ... Remaining code ... -->
+
     </div>
   </div>
 </div>

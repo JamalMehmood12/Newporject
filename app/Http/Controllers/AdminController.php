@@ -111,8 +111,7 @@ class AdminController extends Controller
             'email.unique' => 'The email is already taken.',
             'phone.required' => 'The phone field is required.',
         ]);
-
-
+        
         $data = new reservation;
         $data->name = $req->name;
         $data->email = $req->email;

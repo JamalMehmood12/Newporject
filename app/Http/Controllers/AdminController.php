@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactmail;
+use App\Mail\ContactMail as MailContactMail;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Food;
 use App\Models\Reservation;
 use App\Models\Foodchef;
 use App\Models\Aboutfood;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\Rule;
+use App\Mail\UserContactConfirmation;
+use Auth;
+
+
+
 
 class AdminController extends Controller
 {
@@ -89,6 +98,19 @@ class AdminController extends Controller
 
     public function reservation(Request $req)
     {
+        $this->validate($req, [
+            'name' => 'required|unique:users,name',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required',
+        ], 
+        [
+            'name.required' => 'The name field is required.',
+            'name.unique' => 'The name is already taken.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'The email is already taken.',
+            'phone.required' => 'The phone field is required.',
+        ]);
 
 
         $data = new reservation;
@@ -100,8 +122,11 @@ class AdminController extends Controller
         $data->time = $req->time;
         $data->message = $req->message;
         $data->save();
+        Mail::to('jamalminhas12@gmail.com')->send(new ContactMail($req));
+        // Mail::to($req->email)->send(new UserContactConfirmation($req));
         return redirect()->back();
     }
+
     public function viewreservation()
     {
         $data = reservation::all();
@@ -122,9 +147,7 @@ class AdminController extends Controller
             $imagename = time() . '.' . $image->getClientOriginalExtension();
             $image->move('chefimage', $imagename);
             $data->image = $imagename;
-            // Rest of your code
         } else {
-            // Handle case when no file was uploaded
         }
         $data->name = $req->name;
         $data->speciality = $req->speciality;

@@ -28,8 +28,6 @@
             </div>
             <div class="col-lg-6">
                 <div class="contact-form">
-                 
-
                     <form id="contact" action="{{url('reservation')}}" method="post">
                         @csrf
                         <div class="row">
@@ -38,18 +36,33 @@
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <fieldset>
-                                    <input name="name" type="text" id="name" placeholder="Your Name*" required="">
+                                    <input name="name" type="text" id="name" class="form-control @error('name') is-invalid @enderror" placeholder="Your Name*">
                                 </fieldset>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" required="">
+                                    <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email Address" class="form-control @error('email') is-invalid @enderror">
                                 </fieldset>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <fieldset>
-                                    <input name="phone" type="text" id="phone" placeholder="Phone Number*" required="">
+                                    <input name="phone" type="text" id="phone" placeholder="Phone Number*" class="form-control @error('phone') is-invalid @enderror">
                                 </fieldset>
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <input type="number" name="guest" placeholder="Number Of Guest" />
@@ -69,7 +82,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
+                                    <textarea name="message" rows="6" id="message" placeholder="Message"></textarea>
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
